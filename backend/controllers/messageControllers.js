@@ -1,12 +1,19 @@
+import Conversation from "../models/conversationModel.js"
+
 export const sendMessage = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id:receiverId } = req.params;
     const { message } = req.body;
 
-    // const senderId ;
+ const senderId = req.user._id;
+
+
+ let conversation = await Conversation.findOne({
+  partici
+ })
 
   } catch (error) {
     console.log("Error in sending messages", error.message);
-    res.status(500).json({ error: "Error in Sending messages" });
+    res.status(500).json({ error: "Internal server error!" });
   }
 };
