@@ -4,7 +4,9 @@ import cookieParser from "cookie-parser";
 import connectDB from "./db/connectDB.js";
 
 import authRoutes from "./routes/auth.routes.js";
-import messageRoutes from "./routes/messageRoutes.js"
+import messageRoutes from "./routes/message.routes.js"
+import userRoutes from "./routes/user.routes.js"
+
 const app = express();
 dotenv.config();
 app.use(express.json())
@@ -16,6 +18,8 @@ app.get("/", (req, res) => res.send("Hello dear World"));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages",messageRoutes)
+app.use("/api/users",userRoutes)
+
 
 app.listen(PORT, () => {
   connectDB();
